@@ -3,8 +3,7 @@ resource "aws_lb" "main" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb.id]
-#   subnets = data.aws_subnet.public.*.id
-  subnets = [for subnet in data.aws_subnet.public : subnet.id]
+  subnets            = [for subnet in data.aws_subnet.public : subnet.id]
 
   enable_deletion_protection = false
   drop_invalid_header_fields = true
@@ -38,12 +37,12 @@ resource "aws_lb_target_group" "main" {
   }
 }
 
-resource "aws_lb_listener" "http" {
+resource "aws_lb_listener" "https" {
   load_balancer_arn = aws_lb.main.arn
-  port              = 8080
-  protocol          = "HTTP"
-  #   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  #   certificate_arn   = "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"
+  port              = 443
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  certificate_arn   = aws_acm_certificate.cert.arn
 
   default_action {
     type             = "forward"

@@ -4,18 +4,23 @@ variable "cluster_name" {
 }
 
 variable "hosted_zone_id" {
-  type = string
+  type        = string
   description = "Hosted zone ID for r53"
 }
-# variable "capacity_provider" {
-#   type = list(string)
-#   description = "capacity provider for ECS"
-# }
 
-# variable "default_capacity_provider" {
-#   type = string
-#   description = "Default capacity provider"
-# }
+variable "domain_name" {
+  type        = string
+  description = "Application domain name"
+}
+variable "capacity_provider" {
+  type = list(string)
+  description = "capacity provider for ECS"
+}
+
+variable "default_capacity_provider" {
+  type = string
+  description = "Default capacity provider"
+}
 
 variable "container_insights_enabled" {
   type        = bool

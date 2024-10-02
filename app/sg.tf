@@ -60,7 +60,7 @@ resource "aws_security_group_rule" "ecs_egress" {
   type              = "egress"
   security_group_id = aws_security_group.ecs_wordpress.id
   cidr_blocks       = ["0.0.0.0/0"]
-  protocol          = "-1" # All protocols
+  protocol          = "-1"
   from_port         = 0
   to_port           = 0
   description       = "Allow all egress traffic"
@@ -88,6 +88,6 @@ resource "aws_security_group_rule" "rds_ingress" {
 resource "aws_vpc_security_group_egress_rule" "rds_egress" {
   security_group_id = aws_security_group.rds.id
   cidr_ipv4         = "0.0.0.0/0"
-  ip_protocol       = "-1" # semantically equivalent to all ports
+  ip_protocol       = "-1"
   description       = "Allow all egress traffic"
 }

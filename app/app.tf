@@ -74,16 +74,15 @@ resource "aws_ecs_task_definition" "main" {
       logConfiguration = {
         logDriver = "awslogs"
         options = {
-          awslogs-group        = var.cloudwatch_log_group
-          awslogs-region           = var.region
+          awslogs-group         = var.cloudwatch_log_group
+          awslogs-region        = var.region
           awslogs-stream-prefix = "${local.name}-wordpress"
         }
       }
     }
   ])
-
-#   placement_constraints {
-#     type       = "memberOf"
-#     expression = "attribute:ecs.availability-zone in [us-east-1a, us-east-1b]"
-#   }
+    placement_constraints {
+      type       = "memberOf"
+      expression = "attribute:ecs.availability-zone in [us-east-1a, us-east-1b]"
+    }
 }

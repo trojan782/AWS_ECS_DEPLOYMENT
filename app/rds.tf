@@ -11,7 +11,7 @@ module "rds" {
   instance_class    = var.rds["instance_class"]
   allocated_storage = var.rds["allocated_storage"]
 
-  db_name  = var.rds["db_name"]
+  db_name  = "${upper(var.rds["db_name"])}"
   username = var.rds_username
   password = var.rds_password
   port     = 3306

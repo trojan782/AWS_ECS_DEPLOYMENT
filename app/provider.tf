@@ -5,9 +5,15 @@ terraform {
       version = "5.68.0"
     }
   }
+  backend "s3" {
+    bucket         = "your_bucket_name"
+    key            = "wp_ecs/app/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-state-locks"
+    encrypt        = true
+  }
 }
 
 provider "aws" {
-  # Configuration options
-  region = var.region
+  region = "us-east-1"
 }
