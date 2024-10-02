@@ -11,10 +11,13 @@ This project deploys a wordpress application and database (RDS) on an Amazon ECS
 
 
 ## Prerequisites
+Before you begin, ensure you have the following prerequisites:
 
-- [Terraform](https://www.terraform.io/downloads.html) (version X.X or later)
-- [AWS CLI](https://aws.amazon.com/cli/) configured with appropriate credentials
-- [Docker](https://www.docker.com/get-started) (for building and pushing container images)
+1. **Git**: Make sure Git is installed on your local machine. You can download it from [here](https://git-scm.com/).
+
+2. **Terraform**: Install Terraform on your local machine by downloading it from [here](https://www.terraform.io/downloads.html).
+   
+3.  **AWS CLI**: Ensure you have AWS CLI installed and configured on your local machine by downloading it from [here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
 
 ## Project Structure
 
